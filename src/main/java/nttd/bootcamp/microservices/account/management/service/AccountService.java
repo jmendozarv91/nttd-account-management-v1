@@ -1,5 +1,6 @@
 package nttd.bootcamp.microservices.account.management.service;
 
+import nttd.bootcamp.microservices.account.management.dto.AccountBalance;
 import nttd.bootcamp.microservices.account.management.dto.AccountDto;
 import nttd.bootcamp.microservices.account.management.exceptions.AccountException;
 import nttd.bootcamp.microservices.account.management.repository.AccountRepository;
@@ -60,6 +61,14 @@ public class AccountService {
                                 && (accountDto.getAccountType().equals("001")) || accountDto.getAccountType().equals("003")) {
                             return Mono.error(new AccountException("The business client cannot have savings or fixed-term accounts"));
                         }
+                    return accountRepository.save(accountDto);
+                });
+    }
+
+    public Mono<AccountDto> updateBalanceAccount(String id,AccountBalance accountBalance){
+        return accountRepository.findById(id)
+                .flatMap(accountDto -> {
+                    accountDto.setBalance(accountBalance.getBalance());
                     return accountRepository.save(accountDto);
                 });
     }

@@ -1,18 +1,14 @@
 package nttd.bootcamp.microservices.account.management.dto;
 
-
 import lombok.*;
-import nttd.bootcamp.microservices.account.management.entity.enums.AccountType;
-
-import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class AccountDto {
+public class AccountBusinessDto {
+
     private String id;
     private String accountNumber;
     private String accountType;

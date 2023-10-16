@@ -11,5 +11,5 @@ import nttd.bootcamp.microservices.account.management.entity.enums.AccountType;
 public class AccountClientDto {
     private String id;
     private String accountNumber;
-    private AccountType accountType;
+    private String accountType;
 }
